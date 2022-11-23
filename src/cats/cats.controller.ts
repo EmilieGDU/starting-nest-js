@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Controller, Get, HttpCode, Post, Req } from '@nestjs/common';
 
 @Controller('cats')
 export class CatsController {
     // Endpoint to create new records (POST handler)
     @Post()
+    @HttpCode(204) // In Nest, the status code is always 200 by default, except for POST requests which are 201. We can easily change this behavior by adding the @HttpCode(...) decorator at a handler level
     create(): string {
         return 'This action adds a new cat'
     }
